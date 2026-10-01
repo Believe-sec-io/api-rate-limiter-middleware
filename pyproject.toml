@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "api-rate-limiter-middleware"
+version = "1.0.0"
+description = "Token-bucket rate limiting for ASGI and WSGI APIs: a reusable core, an in-memory backend and an optional Redis backend."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Believe", email = "bombilebelieve@gmail.com" }]
+keywords = [
+  "rate-limit",
+  "rate-limiting",
+  "token-bucket",
+  "throttling",
+  "middleware",
+  "asgi",
+  "wsgi",
+  "fastapi",
+  "flask",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware",
+  "Topic :: Security",
+  "Topic :: System :: Networking",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+redis = ["redis>=5.0"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+
+[project.urls]
+Homepage = "https://github.com/Believe-sec-io/api-rate-limiter-middleware"
+Issues = "https://github.com/Believe-sec-io/api-rate-limiter-middleware/issues"
+Changelog = "https://github.com/Believe-sec-io/api-rate-limiter-middleware/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["rate_limiter"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+source = ["rate_limiter"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = ["pragma: no cover", "raise NotImplementedError", "if TYPE_CHECKING:"]
